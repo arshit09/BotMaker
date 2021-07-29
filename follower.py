@@ -18,7 +18,7 @@ while i < line_count:
     click_type = scan_line[:-1].rsplit(' ', 2)[0]
     click_x = scan_line[:-1].rsplit(' ', 2)[1]
     click_y = scan_line[:-1].rsplit(' ', 2)[2]
-
+    # testing
     if click_type == "click":
         pyautogui.click(int(click_x), int(click_y))
         time.sleep(0.5)
