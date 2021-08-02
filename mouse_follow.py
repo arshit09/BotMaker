@@ -1,10 +1,10 @@
 import pyautogui
 import time
 
-with open('tracker.txt', 'r') as fin:
+with open('mouse_rec.txt', 'r') as fin:
         clicks = fin.read().splitlines(True)
 
-file = open("tracker.txt", "r")
+file = open("mouse_rec.txt", "r")
 line_count = 0
 for line in file:
     if line != "\n":

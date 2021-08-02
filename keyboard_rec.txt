@@ -1,0 +1,10 @@
+Key.alt_l
+Key.tab
+Key.shift
+H
+e
+l
+l
+o
+Key.alt_l
+Key.tab
