@@ -1,4 +1,5 @@
 import pyautogui
+import easygui
 import time
 
 with open('mouse_rec.txt', 'r') as fin:
@@ -11,19 +12,23 @@ for line in file:
         line_count += 1
 file.close()
 
-i = 0
-while i < line_count:
-    scan_line = clicks[i]
+for n in range (0, line_count):
+    scan_line = clicks[n]
     first_line = scan_line[:-1].rsplit(' ', 2)
-    click_type = scan_line[:-1].rsplit(' ', 2)[0]
-    click_x = scan_line[:-1].rsplit(' ', 2)[1]
-    click_y = scan_line[:-1].rsplit(' ', 2)[2]
-    # testing
-    if click_type == "click":
-        pyautogui.click(int(click_x), int(click_y))
-        time.sleep(0.5)
-    elif click_type == "double_click":
-        pyautogui.doubleClick(int(click_x), int(click_y))
-        time.sleep(0.5)
+    click_type = first_line[0]
+    click_x = int(first_line[1])
+    click_y = int(first_line[2])
 
-    i += 1
+    if click_type == "click":
+        pyautogui.click(click_x, click_y)
+        # time.sleep(0.5)
+    elif click_type == "double_click":
+        pyautogui.doubleClick(click_x, click_y)
+        # time.sleep(0.5)
+    elif click_type == "sleep_time":
+        time.sleep(click_x)
+        # time.sleep(0.5)
+
+title = "Mouse Follower"
+msg = 'Script ended successfully.'
+easygui.msgbox(msg, title)

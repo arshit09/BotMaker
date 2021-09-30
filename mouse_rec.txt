@@ -1,1 +1,6 @@
-click 1767 14
+click 1005 889
+sleep_time 1 0
+double_click 1003 893
+sleep_time 2 0
+click 1002 811
+sleep_time 5 0
