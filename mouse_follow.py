@@ -21,13 +21,10 @@ for n in range (0, line_count):
 
     if click_type == "click":
         pyautogui.click(click_x, click_y)
-        # time.sleep(0.5)
     elif click_type == "double_click":
         pyautogui.doubleClick(click_x, click_y)
-        # time.sleep(0.5)
     elif click_type == "sleep_time":
         time.sleep(click_x)
-        # time.sleep(0.5)
 
 title = "Mouse Follower"
 msg = 'Script ended successfully.'
