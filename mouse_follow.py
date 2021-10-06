@@ -1,11 +1,21 @@
 import pyautogui
 import easygui
 import time
+import os
 
-with open('mouse_rec.txt', 'r') as fin:
+title = "Mouse Follower"
+msg = "Select your mouse recorder file:"
+choices = []
+count_files = len(os.listdir('My Bots/'))
+for i in range (0, count_files):
+    if(os.listdir('My Bots/')[i][-4:] == '.txt'):
+        choices.append(os.listdir('My Bots/')[i])
+choice = easygui.choicebox(msg, title, choices)
+file_path ='My Bots\\' + choice
+with open(file_path, 'r') as fin:
         clicks = fin.read().splitlines(True)
 
-file = open("mouse_rec.txt", "r")
+file = open(file_path, "r")
 line_count = 0
 for line in file:
     if line != "\n":
@@ -23,9 +33,10 @@ for n in range (0, line_count):
         pyautogui.click(click_x, click_y)
     elif click_type == "double_click":
         pyautogui.doubleClick(click_x, click_y)
+    elif click_type == "right_click":
+        pyautogui.rightClick(click_x, click_y)
     elif click_type == "sleep_time":
         time.sleep(click_x)
 
-title = "Mouse Follower"
 msg = 'Script ended successfully.'
 easygui.msgbox(msg, title)
