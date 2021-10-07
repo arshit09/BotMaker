@@ -16,12 +16,15 @@ botfilepath = '.\\My Bots\\' + currenttime + '.txt'
 xy = []
 # ------------------------
 
-easygui.msgbox("Press 'C' to record a click.\nPress 'D' to record a double-click.\nPress 'R' to record a right-click.\n\nPress 'Esc' key to exit.", "Mouse Recorder")
+if easygui.msgbox("Press 'C' to record a click.\nPress 'D' to record a double-click.\nPress 'R' to record a right-click.\nTo take screenshot: \n   Press '1' to record one corner.\n   Press '2' to record another corner.\n\nPress 'Esc' key to exit.", "Mouse Recorder") is None:
+    exit()
 
 title = "Mouse Recorder"
 msg = "Select your choice:\n\n\n1. Add constant sleep time after every click.\n   (you will be asked one time after first click only)\n\n2. Add custom sleep time after every click.\n   (you will be asked everytime for that time after you click.)\n\n3. Keep sleep time most of the time same and let me choose for sometime.\n   (input will be filled up by default, you can change whenever you want)"
 choices = ["     1     ", "     2     ", "     3     "]
 reply = easygui.buttonbox(msg, title, choices=choices)
+if reply is None:
+    exit()
 
 def takeSS():
     topL = []
@@ -154,9 +157,8 @@ def on_press(key):
 
     if key == Key.esc:
         msg = 'Mouse movements recorded successfully.\n\nPlease save your bot file'
-        new_name = easygui.enterbox(msg, title, botfilepath[10:])
-        # rename_command = 'ren ' + '"My Bots"\mouse_rec.txt ' + new_name + '.txt'
-        rename_command = 'ren ' + '"My Bots"\\' + botfilepath[10:-4] + ' ' + new_name + '.txt'
+        new_name = easygui.enterbox(msg, title, botfilepath[10:-4])
+        rename_command = 'ren ' + '"My Bots"\\' + botfilepath[10:] + ' ' + new_name + '.txt'
         os.system(rename_command)
         exit()
 
