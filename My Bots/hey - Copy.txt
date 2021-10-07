@@ -1,0 +1,11 @@
+click 1121 466
+sleep_time 1 0
+click 1025 602
+sleep_time 1 0
+double_click 453 525
+sleep_time 1 0
+right_click 1107 459
+click 1190 606
+sleep_time 1 0
+screenshot 07d10m2021y13hr39m29s.png 0
+sleep_time 1 0

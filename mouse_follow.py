@@ -26,17 +26,23 @@ for n in range (0, line_count):
     scan_line = clicks[n]
     first_line = scan_line[:-1].rsplit(' ', 2)
     click_type = first_line[0]
-    click_x = int(first_line[1])
-    click_y = int(first_line[2])
+    click_x = first_line[1]
+    click_y = first_line[2]
 
     if click_type == "click":
-        pyautogui.click(click_x, click_y)
+        pyautogui.click(int(click_x), int(click_y))
     elif click_type == "double_click":
-        pyautogui.doubleClick(click_x, click_y)
+        pyautogui.doubleClick(int(click_x), int(click_y))
     elif click_type == "right_click":
-        pyautogui.rightClick(click_x, click_y)
+        pyautogui.rightClick(int(click_x), int(click_y))
     elif click_type == "sleep_time":
-        time.sleep(click_x)
+        time.sleep(int(click_x))
+    elif click_type == "screenshot":
+        sspath = './My Bots/' + click_x
+        screenshot = pyautogui.locateOnScreen(sspath, confidence=0.8)
+        while screenshot == None:
+            screenshot = pyautogui.locateOnScreen(sspath)            
+        pyautogui.click(pyautogui.center(screenshot))
 
 msg = 'Script ended successfully.'
 easygui.msgbox(msg, title)
